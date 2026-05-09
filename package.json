@@ -1,0 +1,22 @@
+{
+  "name": "team-task-manager",
+  "version": "1.0.0",
+  "description": "A complete full-stack Team Task Manager web application built with the MERN stack.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm --prefix backend install && npm --prefix frontend install && npm --prefix frontend run build",
+    "start": "npm --prefix backend start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nandhu6143/Team-Task-Manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nandhu6143/Team-Task-Manager/issues"
+  },
+  "homepage": "https://github.com/nandhu6143/Team-Task-Manager#readme"
+}

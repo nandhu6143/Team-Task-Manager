@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
 
 // Load env vars
 dotenv.config();
@@ -24,10 +25,21 @@ app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/tasks', taskRoutes);
 
-// Simple route for testing
-app.get('/', (req, res) => {
-  res.send('Team Task Manager API is running');
-});
+// Serve frontend
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+  // Any route that is not API will be redirected to index.html
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../frontend', 'dist', 'index.html'));
+  });
+} else {
+  // Simple route for testing in dev
+  app.get('/', (req, res) => {
+    res.send('Team Task Manager API is running');
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 
